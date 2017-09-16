@@ -14,13 +14,14 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\siswa::class, function (Faker\Generator $faker) {
     static $password;
-
+    $kel =$faker->randomElement($array = array ('male', 'female'));
+    $grade =$faker->randomElement($array = array ('X RPL 1', 'X RPL 2', 'XI RPL 1', 'XI RPL 2', 'XII RPL 1', 'XII RPL 2'));
     return [
-      'nis' => $faker->randomNumber,
-      'name' => $faker->name,
-      'grade' => 'RPL',
-      'gender' => 'male',
+      'nis' => $faker->numberBetween($min = 1000, $max = 9000),
+      'name' => $faker->name($gender = $kel),
+      'grade' => $grade,
+      'gender' => $gender,
       'address' => $faker->address,
-      
+
     ];
 });

@@ -14,8 +14,7 @@ class CreateSiswasTable extends Migration
     public function up()
     {
         Schema::create('siswas', function (Blueprint $table) {
-            $table->increments('nisn');
-            $table->integer('nis');
+            $table->increments('nis');
             $table->string('name');
             $table->string('grade', 20);
             $table->enum('gender',['male','female']);
