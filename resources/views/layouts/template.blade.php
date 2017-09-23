@@ -645,5 +645,6 @@
 {{--<!-- AdminLTE for demo purposes -->--}}
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- Custom Script & Addon Script -->
+@yield('javascript')
 </body>
 </html>
