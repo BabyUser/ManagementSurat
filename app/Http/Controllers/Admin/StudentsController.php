@@ -12,7 +12,9 @@ class StudentsController extends Controller
     {
       //Kategori
       $active = 'StudentsList';
-      $user['list'] = siswa::where('grade', 'like', "%$request->kelas%")->orwhere('name', 'like', "%$request->kelas%")->paginate(15);
+      $user['list'] = siswa::where('grade', 'like', "%$request->kelas%")
+                        ->orwhere('name', 'like', "%$request->kelas%")
+                        ->paginate(15);
       // data kelas 10
       $user['klsX'] = siswa::
                         where('grade', 'like', '10%')
@@ -28,7 +30,7 @@ class StudentsController extends Controller
                         where('grade', 'like', '12%')
                         ->get()
                         ->count();
-      return view('admin.students',['active' => $active, 'users' => $user]);
+      return view('admin.students.students',['active' => $active, 'users' => $user]);
     }
 
     public function destroy($nis)
@@ -36,6 +38,20 @@ class StudentsController extends Controller
       $active = 'StudentsList';
       //soft delete
       siswa::where('nis', "$nis")->delete();
+
       return redirect()->route('admin.ListStudents', ['active' => $active]);
     }
+
+    public function trash()
+    {
+      $active = 'StudentsTrash';
+      //menampilkan hasil soft delete
+      $trash['list'] = siswa::withTrashed()
+
+                  ->where('deleted_at', '!=' ,'')
+                  ->paginate(5);
+
+      return view('admin.students.trashStudents', ['trash' => $trash, 'active' => $active]);
+    }
+
 }

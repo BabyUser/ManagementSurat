@@ -39,6 +39,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'admin.', 'namespace' => 'admin' 
   {
     Route::get('list', 'StudentsController@list')->name('ListStudents');
     Route::get('list/delete/{nis}', 'StudentsController@destroy')->name('destroy');
+    Route::get('list/trash', 'StudentsController@trash')->name('trashStudents');
 
   });
 });

@@ -368,7 +368,7 @@
                     <li><a href="#"><i class="fa fa-trash-o"></i><span>Trash</span></a></li>
                   </ul>
                 </li>
-                <li class="treeview {{ ($active == 'StudentsList') ? 'active' : '' }}">
+                <li class="treeview {{ ($active == 'StudentsList' || $active == 'StudentsTrash') ? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-database"></i> <span>Master</span>
                         <span class="pull-right-container">
@@ -384,12 +384,12 @@
                             <li class=""><a href="#"><i class="fa fa-trash"></i> Trash</a></li>
                           </ul>
                         </li>
-                        <li class="treeview {{ ($active == 'StudentsList') ? 'active' : '' }}">
+                        <li class="treeview {{ ($active == 'StudentsList' || $active == 'StudentsTrash') ? 'active' : '' }}">
                             <a href="#"><i class="fa fa-graduation-cap"></i>Student's</a>
                             <ul class="treeview-menu nav nav-pills nav-stacked" >
                               <li class="{{($active == 'StudentsList') ? 'active' : ''}}"><a href="{{url()->route('admin.ListStudents')}}"><i class="fa fa-list"></i>List Student</a></li>
                               <li class=""><a href=""><i class="fa fa-plus"></i> Add</a></li>
-                              <li class=""><a href="#"><i class="fa fa-trash"></i> Trash</a></li>
+                              <li class="{{ ($active == 'StudentsTrash') ? 'active' : '' }}"><a href="{{ url()->route('admin.trashStudents') }}"><i class="fa fa-trash"></i> Trash</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
